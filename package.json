@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "cross-env PORT=4000 nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@nuxtjs/proxy": "^2.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
+    "eslint": "^8.30.0",
+    "eslint-plugin-vue": "^9.8.0",
+    "nuxt": "3.0.0",
+    "prettier": "2.8.1",
+    "typescript": "^4.9.4",
+    "unplugin-vue-components": "^0.22.12",
+    "vite-plugin-eslint": "^1.8.1"
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "3000"
+    }
+  },
+  "dependencies": {
+    "ant-design-vue": "^3.2.15",
+    "cross-env": "^7.0.3"
+  }
+}
