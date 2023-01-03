@@ -2,16 +2,45 @@
 import eslintPlugin from 'vite-plugin-eslint'
 import { resolve } from 'pathe'
 import Components from 'unplugin-vue-components/vite'
-import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineNuxtConfig({
+  ssr: true,
+  build: {
+    transpile:
+      process.env.NODE_ENV === 'production'
+        ? [
+            'naive-ui',
+            'vueuc',
+            '@css-render/vue3-ssr',
+            '@juggle/resize-observer'
+          ]
+        : ['@juggle/resize-observer']
+  },
+  nitro: {
+    commonJS: {
+      dynamicRequireTargets: [
+        './node_modules/@vue/compiler-core',
+        './node_modules/@vue/compiler-dom',
+        './node_modules/@vue/compiler-ssr',
+        './node_modules/vue/server-renderer',
+        './node_modules/vue'
+      ]
+    }
+  },
   routeRules: {
     '/**': { headers: { 'Access-Control-Allow-Origin': '*' } }
   },
   alias: {
-    '@': resolve(__dirname, './src')
+    '@': resolve(__dirname, './src'),
+    '@vue/compiler-core': '@vue/compiler-core',
+    '@vue/compiler-dom': '@vue/compiler-dom',
+    '@vue/compiler-ssr': '@vue/compiler-ssr',
+    'vue/server-renderer': 'vue/server-renderer',
+    'estree-walker': 'estree-walker',
+    '@babel/parser': '@babel/parser'
   },
-  css: ['ant-design-vue/dist/antd.css'],
+  css: ['~/assets/styles/variable.scss'],
   imports: {
     dirs: [
       // Scan top-level modules
@@ -23,17 +52,23 @@ export default defineNuxtConfig({
     ]
   },
   vite: {
+    optimizeDeps: {
+      include:
+        process.env.NODE_ENV === 'development'
+          ? ['naive-ui', 'vueuc', 'date-fns-tz/esm/formatInTimeZone']
+          : []
+    },
     plugins: [
       eslintPlugin({
         emitWarning: true,
         emitError: true
       }),
       Components({
-        resolvers: [AntDesignVueResolver()]
+        resolvers: [NaiveUiResolver()]
       })
     ],
     ssr: {
-      noExternal: ['moment', 'compute-scroll-into-view', 'ant-design-vue', '@ant-design/icons-vue']
+      noExternal: ['moment', 'naive-ui', '@juggle/resize-observer', '@css-render/vue3-ssr']
     },
     server: {
       headers: {
