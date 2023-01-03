@@ -6,7 +6,6 @@
       name="basic"
       autocomplete="off"
       @finish="onFinish"
-      @finish-failed="onFinishFailed"
     >
       <a-form-item
         label="Username"
@@ -61,7 +60,4 @@ const onFinish = async (values) => {
   }
 }
 // 校验失败
-const onFinishFailed = (errorInfo) => {
-  // console.log('Failed:', errorInfo)
-}
 </script>

@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     '@': resolve(__dirname, './src')
   },
   css: ['ant-design-vue/dist/antd.css'],
-  buildDir: 'nuxt-build',
   imports: {
     dirs: [
       // Scan top-level modules
