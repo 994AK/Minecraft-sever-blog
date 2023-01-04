@@ -7,7 +7,7 @@ export const getData = async (url, params = {}) => {
     }
   )
 
-  return result
+  return result.value
 }
 
 export const postData = async (url, params = {}) => {

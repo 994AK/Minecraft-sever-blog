@@ -12,7 +12,7 @@
 
         <div class="form">
           <LoginUser v-if="!handoff" />
-          <SignupUser v-else />
+          <SignupUser v-else @signupFn="signupFn" />
         </div>
       </div>
       <div class="login-handoff">
@@ -32,6 +32,10 @@ const handoff = ref(false)
 // 登陆与注册切换
 function handleHandOff () {
   handoff.value = !handoff.value
+}
+
+function signupFn () {
+  handoff.value = false
 }
 
 </script>

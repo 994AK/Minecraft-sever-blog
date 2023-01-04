@@ -4,7 +4,6 @@
     name="basic"
     autocomplete="off"
     @finish="onFinish"
-    @finish-failed="onFinishFailed"
   >
     <a-form-item
       name="email"
@@ -20,10 +19,10 @@
       </a-input>
     </a-form-item>
     <a-form-item
-      name="username"
+      name="name"
       :rules="[{ required: true, min:2, max:50, message: '请输入2-50个字用户名' }]"
     >
-      <a-input v-model:value="formState.username" placeholder="用户名">
+      <a-input v-model:value="formState.name" placeholder="用户名">
         <template #prefix>
           <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
         </template>
@@ -31,7 +30,10 @@
     </a-form-item>
     <a-form-item
       name="password"
-      :rules="[{ required: true, message: '请输入密码' }]"
+      :rules="[
+        { required: true, message: '请输入密码' },
+        { min:5, message: '密码起码5位数吧'}
+      ]"
     >
       <a-input v-model:value="formState.password" type="password" placeholder="密码">
         <template #prefix>
@@ -53,15 +55,22 @@ import {
   LockOutlined,
   MailOutlined
 } from '@ant-design/icons-vue'
+import { message } from 'ant-design-vue'
+import debounce from '~/utils/debounce.js'
+const emit = defineEmits(['signupFn'])
 const formState = reactive({
-  username: '',
+  name: '',
   password: '',
   email: ''
 })
 const onFinish = (values) => {
-  console.log('Success:', values)
-}
-const onFinishFailed = (errorInfo) => {
-  console.log('Failed:', errorInfo)
+  debounce(async () => {
+    const { code, msg } = await postData('api/user/signup', values)
+    if (code !== '1') { return message.warning(msg) }
+    message.success(msg)
+
+    // 调用父级的方法 -> 切换登陆模式
+    emit('signupFn')
+  }, 500)
 }
 </script>
