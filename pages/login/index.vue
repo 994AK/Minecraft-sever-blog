@@ -2,102 +2,30 @@
   <div class="login-main">
     <div class="login-box">
       <div class="login-icon">
-        <n-icon size="50" color="#277ffe">
-          <NutritionOutline v-if="handoff" />
-          <NutritionSharp v-else />
-        </n-icon>
+        <car-two-tone :style="{fontSize:'50px'}" />
       </div>
       <div class="login-form">
         <div class="title">
           <p>{{ handoff ? '注册页面' : '登陆页面' }}</p>
-          <p>祝你{{ handoff ? '注册愉快' : '登陆愉快' }}</p>
+          <p>{{ handoff ? '注册用户' : '登陆用户' }}</p>
         </div>
 
         <div class="form">
-          <!-- 登陆模块  -->
-          <n-form
-            v-if="!handoff"
-            ref="formRef"
-            size="medium"
-          >
-            <n-form-item :show-label="false">
-              <n-input placeholder="输入邮箱">
-                <template #prefix>
-                  <n-icon size="25" color="#277ffe">
-                    <Mail />
-                  </n-icon>
-                </template>
-              </n-input>
-            </n-form-item>
-            <n-form-item :show-label="false">
-              <n-input placeholder="输入密码">
-                <template #prefix>
-                  <n-icon size="25" color="#277ffe">
-                    <LockClosed />
-                  </n-icon>
-                </template>
-              </n-input>
-            </n-form-item>
-
-            <n-button
-              class="btn"
-              type="info"
-            >
-              登陆
-            </n-button>
-          </n-form>
-          <!-- 注册模块  -->
-          <n-form
-            v-else
-            ref="formRef"
-            size="medium"
-          >
-            <n-form-item :show-label="false">
-              <n-input placeholder="输入用户名">
-                <template #prefix>
-                  <n-icon size="25" color="#277ffe">
-                    <Accessibility />
-                  </n-icon>
-                </template>
-              </n-input>
-            </n-form-item>
-
-            <n-form-item :show-label="false">
-              <n-input placeholder="输入邮箱">
-                <template #prefix>
-                  <n-icon size="25" color="#277ffe">
-                    <Mail />
-                  </n-icon>
-                </template>
-              </n-input>
-            </n-form-item>
-            <n-form-item :show-label="false">
-              <n-input placeholder="输入密码">
-                <template #prefix>
-                  <n-icon size="25" color="#277ffe">
-                    <LockClosed />
-                  </n-icon>
-                </template>
-              </n-input>
-            </n-form-item>
-            <n-button
-              class="btn"
-              type="info"
-            >
-              注册
-            </n-button>
-          </n-form>
+          <LoginUser v-if="!handoff" />
+          <SignupUser v-else />
         </div>
       </div>
       <div class="login-handoff">
-        没有账号? <span @click="handleHandOff">{{ handoff ? '点击这里登陆' : '点击这里注册' }} </span>
+        {{ handoff ? '已有账号?' : '没有账号?' }}  <span @click="handleHandOff">{{ handoff ? '点击这里登陆' : '点击这里注册' }} </span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { Mail, LockClosed, NutritionSharp, Accessibility, NutritionOutline } from '@vicons/ionicons5'
+import {
+  CarTwoTone
+} from '@ant-design/icons-vue'
 // 切换登陆与注册 false登陆页面
 const handoff = ref(false)
 
@@ -105,24 +33,7 @@ const handoff = ref(false)
 function handleHandOff () {
   handoff.value = !handoff.value
 }
-// import { postData } from '~/composables/getData'
 
-// const formState = reactive({
-//   name: '',
-//   password: '',
-//   email: ''
-// })
-//
-// // 校验通过
-// const onFinish = async (values) => {
-//   const { data, msg } = await postData('api/user', values)
-//   if (data) {
-//     message.info('添加成功')
-//   } else {
-//     message.warning(msg)
-//   }
-// }
-// // 校验失败
 </script>
 
 <style lang="scss" scoped>
