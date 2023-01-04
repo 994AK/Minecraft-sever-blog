@@ -35,6 +35,8 @@
     "@nuxtjs/robots": "^3.0.0",
     "ant-design-vue": "3.0.0-beta.8",
     "cross-env": "^7.0.3",
+    "postcss": "^8.4.20",
+    "postcss-px-to-viewport-8-plugin": "^1.1.5",
     "sass": "^1.57.1"
   }
 }
