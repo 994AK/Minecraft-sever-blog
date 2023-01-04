@@ -5,8 +5,27 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineNuxtConfig({
   ssr: true,
+  runtimeConfig: {
+    // Private keys are only available on the server
+    apiSecret: '123',
+    // Public keys that are exposed to the client
+    public: {
+      apiUrl: process.env.API_URL
+    }
+  },
+  app: {
+    head: {
+      charset: 'utf-16',
+      viewport: 'width=500, initial-scale=1',
+      title: 'My App',
+      meta: [
+        // <meta name="description" content="My amazing site">
+        { name: 'description', content: 'My amazing site.' }
+      ]
+    }
+  },
   build: {
-    transpile: ['@babel/plugin-transform-runtime']
+    transpile: process.env.NODE_ENV === 'development' ? ['@babel/plugin-transform-runtime'] : ['@babel/plugin-transform-runtime', '@babel/runtime']
   },
   vite: {
     optimizeDeps: {

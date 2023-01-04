@@ -1,8 +1,7 @@
 {
   "private": true,
-  "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build --mode produce",
     "dev": "cross-env nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -32,7 +31,7 @@
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
     "@babel/plugin-transform-runtime": "^7.19.6",
-    "@babel/runtime": "7.16",
+    "@babel/runtime": "^7.20.7",
     "@nuxtjs/robots": "^3.0.0",
     "ant-design-vue": "3.0.0-beta.8",
     "cross-env": "^7.0.3",

@@ -1,6 +1,7 @@
+const envUrl = process.env.NODE_ENV !== 'development' ? 'http://159.75.79.184:3000/' : 'http://localhost:3000/'
 export const getData = async (url, params = {}) => {
   const { data: result } = await useFetch(
-    'http://localhost:3000/' + url,
+    envUrl + url,
     {
       params,
       method: 'GET'
@@ -12,7 +13,7 @@ export const getData = async (url, params = {}) => {
 
 export const postData = async (url, params = {}) => {
   const { data } = await useFetch(
-    'http://localhost:3000/' + url,
+    envUrl + url,
     {
       method: 'POST',
       body: params,
