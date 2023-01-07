@@ -65,9 +65,9 @@ const formState = reactive({
 })
 const onFinish = (values) => {
   debounce(async () => {
-    const { code, msg } = await postData('api/auth/signup', values)
-    if (code !== '1') { return message.warning(msg) }
-    message.success(msg)
+    const { value: data } = await postData('api/auth/signup', values)
+    if (data) { return message.warning(data.msg) }
+    message.success(data.msg)
 
     // 调用父级的方法 -> 切换登陆模式
     emit('signupFn')

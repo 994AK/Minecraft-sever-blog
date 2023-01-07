@@ -51,8 +51,9 @@ const onFinish = (values) => {
     const { value: data } = await postData('api/auth/login', values)
     if (!data) { return message.warning(data.msg) }
     message.success(data.msg)
+
     const authToken = useCookie('authToken')
-    authToken.value = data?.access_token
+    authToken.value = data?.data?.access_token
     // const user = await getData('api/user/findUserById')
     // console.log(user.data)
     await navigateTo('/')

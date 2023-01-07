@@ -1,11 +1,14 @@
 <template>
   <div>
-    <p>服务器名字:HuaYu</p>
-    <p>服务器版本 {{ state.data.version }}</p>
-    <p>在线玩家: {{ state.data.players.list.join(',') }}</p>
-    <p v-if="user" style="font-size: 20px">
-      你的名字: {{ user?.data?.name }}
-    </p>
+    <div v-if="state">
+      <p>服务器名字:HuaYu</p>
+      <p>服务器版本 {{ state.data.version }}</p>
+      <p>在线玩家: {{ state.data.players.list.join(',') }}</p>
+      <p v-if="user" style="font-size: 20px">
+        你的名字: {{ user?.data?.name }}
+      </p>
+    </div>
+
     <div>
       <p v-if="user?.data?.dailyCheckInsEntity[0]?.signShow" style="color:red">
         你已签到了哦
@@ -34,6 +37,8 @@ function signBtn () {
         notes: '我不知道今天发生了什么',
         signEquipment: 'iphone'
       })
+
+      console.log(sign)
 
       message.success(sign.msg)
 
