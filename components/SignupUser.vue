@@ -65,7 +65,7 @@ const formState = reactive({
 })
 const onFinish = (values) => {
   debounce(async () => {
-    const { code, msg } = await postData('api/user/signup', values)
+    const { code, msg } = await postData('api/auth/signup', values)
     if (code !== '1') { return message.warning(msg) }
     message.success(msg)
 

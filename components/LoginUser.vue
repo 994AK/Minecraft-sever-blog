@@ -48,11 +48,14 @@ const formState = reactive({
 })
 const onFinish = (values) => {
   debounce(async () => {
-    const { code, data, msg } = await postData('api/user/login', values)
-
-    if (code !== '1') { return message.warning(msg) }
-    message.success(msg)
-    await navigateTo('/users/' + data?.id)
+    const { value: data } = await postData('api/auth/login', values)
+    if (!data) { return message.warning(data.msg) }
+    message.success(data.msg)
+    const authToken = useCookie('authToken')
+    authToken.value = data?.access_token
+    // const user = await getData('api/user/findUserById')
+    // console.log(user.data)
+    await navigateTo('/')
   }, 500)
   console.log('Success:', values)
 }

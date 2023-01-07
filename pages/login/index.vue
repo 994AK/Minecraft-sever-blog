@@ -35,6 +35,7 @@ function handleHandOff () {
 }
 
 function signupFn () {
+  console.log(1)
   handoff.value = false
 }
 
