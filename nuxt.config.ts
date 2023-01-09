@@ -1,4 +1,3 @@
-// import eslintPlugin from 'vite-plugin-eslint'
 import { resolve } from 'pathe'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
@@ -19,11 +18,12 @@ export default defineNuxtConfig({
   app: {
     head: {
       charset: 'utf-16',
-      viewport: 'width=500, initial-scale=1',
-      title: 'My App',
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+      title: '首页',
       meta: [
         // <meta name="description" content="My amazing site">
-        { name: 'description', content: 'My amazing site.' }
+        { name: 'description', content: 'My amazing site.' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' }
       ]
     }
   },
