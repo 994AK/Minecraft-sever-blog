@@ -1,8 +1,5 @@
 <template>
   <div>
-    <h1 class="text-3xl font-bold">
-      Hello world!
-    </h1>
     <div v-if="state">
       <p>服务器名字:HuaYu</p>
       <p>服务器版本 {{ state.data.version }}</p>
@@ -41,7 +38,6 @@ function signBtn () {
         signEquipment: 'iphone'
       })
       message.success(sign.msg)
-
       // 更新状态
       user.value = await getData('api/user/findUserById')
     } else {
@@ -57,7 +53,7 @@ useHead({
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   charset: 'utf-8',
   meta: [
-    { name: 'HuaYu服务器', content: '我的世界服务器1.19.2' },
+    { name: 'Home', content: '我的世界HuaYu服务器1.19.2' },
     { hid: 'keywords', name: 'keywords', content: '我的世界服务器, HuaYu,我的世界1.19.2' }
   ],
   link: [
