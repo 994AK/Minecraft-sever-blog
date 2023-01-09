@@ -1,5 +1,8 @@
 <template>
   <div>
+    <h1 class="text-3xl font-bold">
+      Hello world!
+    </h1>
     <div v-if="state">
       <p>服务器名字:HuaYu</p>
       <p>服务器版本 {{ state.data.version }}</p>
@@ -37,9 +40,6 @@ function signBtn () {
         notes: '我不知道今天发生了什么',
         signEquipment: 'iphone'
       })
-
-      console.log(sign)
-
       message.success(sign.msg)
 
       // 更新状态

@@ -4,6 +4,9 @@ import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineNuxtConfig({
+  modules: [
+    '@nuxtjs/tailwindcss'
+  ],
   ssr: true,
   runtimeConfig: {
     // Private keys are only available on the server
