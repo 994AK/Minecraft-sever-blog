@@ -1,42 +1,67 @@
-# Nuxt 3 Minimal Starter
+# Minecraft-sever-blog
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+> 我喜欢玩Minecraft服务器，自己也搭建个服务器，我发现每次都要自己输入指令，特别繁琐，所以通过ROCN方式搭建属于自己服务器端 sever-blog
 
-## Setup
 
-Make sure to install the dependencies:
 
-```bash
-# yarn
-yarn install
+#  项目框架
 
-# npm
-npm install
+> 1. 使用`nuxt3 + tailwindcss `部署前端页面
+>
+> 2. 后端使用`nestjs + mysql数据库` 部署后端页面
+> 3. 如果你想开箱即用, 请拉取前后端项目代码 
 
-# pnpm
-pnpm install --shamefully-hoist
-```
+前端地址：https://github.com/994AK/Minecraft-sever-blog
 
-## Development Server
+后端地址：https://github.com/994AK/Minecraft-nest-ROCN
 
-Start the development server on http://localhost:3000
+## 开始
 
-```bash
-npm run dev
-```
+如果你也想在自己服务器搭建一个sever-blog 你可以跟着我完成以下步骤
 
-## Production
+1. 拉取项目
 
-Build the application for production:
+   ```js
+   git clone https://github.com/994AK/Minecraft-sever-blog.git
+   ```
+
+2. 安装依赖
+
+   ```js
+   # yarn
+   yarn install
+   
+   # npm
+   npm install
+   
+   # pnpm
+   pnpm install --shamefully-hoist
+   ```
+
+3. 启动项目
+
+   ```js
+   # yarn 
+   yarn dev
+   
+   #npm
+   npm run dev
+   
+   #pnpm
+   pnpm run dev
+   ```
+
+## 打包部署
 
 ```bash
 npm run build
 ```
 
-Locally preview production build:
+打包预览
 
 ```bash
 npm run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+
