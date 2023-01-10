@@ -1,14 +1,13 @@
 <template>
   <div>
-    <div class="md:flex md:justify-center md:h-14 md:bg-gray-700">
+    <div class="md:h-14 md:bg-gray-700">
       <!--  电脑tab   -->
-      <div class="hidden md:flex md:items-center md:w-10/12 md:h-full md:px-5 ">
+      <div class="hidden  md:flex md:items-center md:h-full md:px-10 ">
         <img alt="logo" src="/favicon.ico" width="40" height="40">
         <div class="md:flex  md:ml-10">
           <div
             v-for="(item,index) in layoutTabs"
             :key="item"
-
             @click="handleSelectedHandOff(index)"
           >
             <NuxtLink
@@ -78,7 +77,7 @@ const layoutTabs = [{
   name: '首页',
   path: '/'
 }, {
-  name: '服务器状态',
+  name: '玩家列表',
   path: '/server-status'
 }
 ]
@@ -97,7 +96,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .text-tabs {
-  @apply md:px-2 md:py-2 md:mr-5 md:rounded-md cursor-pointer
+  @apply md:px-2.5 md:py-2.5 md:mr-5 md:rounded-md cursor-pointer
 }
 
 .tabs-Selected {
