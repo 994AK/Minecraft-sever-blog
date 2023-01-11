@@ -99,6 +99,7 @@ function signupFn () {
       span {
         color: #0173cd;
         cursor: pointer;
+
       }
     }
   }
