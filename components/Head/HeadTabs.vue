@@ -2,7 +2,7 @@
   <div>
     <div class="md:h-14 md:bg-gray-700">
       <!--  电脑tab   -->
-      <div class="hidden  md:flex md:items-center md:h-full md:px-10 ">
+      <div class="hidden max-w-7xl mx-auto   md:flex md:items-center md:h-full ">
         <img alt="logo" src="/favicon.ico" width="40" height="40">
         <div class="md:flex  md:ml-10">
           <div

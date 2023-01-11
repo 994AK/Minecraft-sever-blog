@@ -9,13 +9,16 @@
         <div class="md:text-xl text-slate-700 font-bold">
           目前服务器在线
         </div>
-        <div class="md:py-3 md:px-5 md:flex md:items-center  text-base font-medium text-indigo-600 border-indigo-600 hover:bg-indigo-50 border rounded-md cursor-pointer">
+        <div
+          class="md:py-3 md:px-5 md:flex md:items-center  text-base font-medium text-indigo-600 border-indigo-600 hover:bg-indigo-50 border rounded-md cursor-pointer"
+          @click="handleClickFlushed"
+        >
           <span class="pr-3"><img width="20" height="20" src="/shuax.png" alt="刷新"></span>
           <span>刷新</span>
         </div>
       </div>
 
-      <div class="md:mt-6">
+      <div v-if="state?.data" class="md:mt-6">
         <ul class="md:flex gap-3 md:flex-wrap ">
           <li
             v-for="(item,index) in state.data.players.list"
@@ -45,5 +48,10 @@
 </template>
 
 <script setup>
-const state = await getData('api/minecraft/state')
+const state = ref(await getData('api/minecraft/state'))
+function handleClickFlushed () {
+  debounce(async () => {
+    state.value = await getData('api/minecraft/state')
+  }, 500)
+}
 </script>

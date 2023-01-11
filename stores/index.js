@@ -5,7 +5,6 @@ export const useLayouts = defineStore('layouts', (path = 0) => {
 
   function handleSelectedHandOff (index = 0) {
     selectedIndex.value = index
-    console.log(selectedIndex.value)
   }
 
   return {
