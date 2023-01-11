@@ -21,7 +21,7 @@
       </div>
     </div>
     <!--  访问效果   -->
-    <div v-if="props.showVisit" class="p-5 cursor-pointer" @click="$emit('click')">
+    <div v-if="props.showVisit" class="p-5 cursor-pointer" @click="$emit('emitsClick')">
       <div class="md:text-sm font-medium text-gray-500">
         {{ props.title }}
       </div>
@@ -40,18 +40,17 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-interface Props {
-  title: string; // 标题
-  num?: number; // 显示数量
-  showVisit?: boolean; // 开启访问入口
-  prompt?: string; // 提示语
-}
+<script setup>
 
-const props = defineProps<Props>()
+const props = defineProps({
+  title: String, // 标题
+  num: Number, // 显示数量
+  showVisit: Boolean, // 开启访问入口
+  prompt: String // 提示语
+})
 
 // 暴露方法出去给父级
-defineEmits(['click'])
+defineEmits(['emitsClick'])
 </script>
 
 <style scoped lang="scss">

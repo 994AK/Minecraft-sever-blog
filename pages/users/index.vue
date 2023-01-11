@@ -32,7 +32,7 @@
             gap-3 w-full"
           >
             <div class="flex-none md:w-[80px] h-[80px]">
-              <img class="md:w-[80px] h-[80px] object-cover rounded-full" :src="'https://mc-heads.net/avatar/'+item">
+              <img class="md:w-[80px] h-[80px] object-cover rounded-full" :src="'https://mc-heads.net/avatar/'+item" alt="像素头像">
             </div>
 
             <!-- 电脑页 -->
@@ -58,6 +58,7 @@
 </template>
 
 <script setup>
+import debounce from '~/utils/debounce.js'
 const state = ref(await getData('api/minecraft/state'))
 function handleClickFlushed () {
   debounce(async () => {

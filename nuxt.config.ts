@@ -1,14 +1,11 @@
+// import eslintPlugin from 'vite-plugin-eslint'
 import { resolve } from 'pathe'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineNuxtConfig({
-  imports: {
-    dirs: ['stores']
-  },
   modules: [
-    '@nuxtjs/tailwindcss',
-    '@pinia/nuxt'
+    '@nuxtjs/tailwindcss'
   ],
   ssr: true,
   runtimeConfig: {
@@ -19,6 +16,10 @@ export default defineNuxtConfig({
       apiUrl: process.env.API_URL
     }
   },
+  components: {
+    global: true,
+    dirs: ['~/components']
+  },
   app: {
     head: {
       charset: 'utf-16',
@@ -26,7 +27,6 @@ export default defineNuxtConfig({
       title: '首页',
       meta: [
         // <meta name="description" content="My amazing site">
-        { name: 'description', content: 'My amazing site.' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' }
       ]
     }

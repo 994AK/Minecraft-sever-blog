@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "nuxt build --mode produce",
+    "build": "nuxi build",
     "dev": "cross-env nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",

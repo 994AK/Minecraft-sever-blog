@@ -14,7 +14,7 @@
             :num="item.num"
             :show-visit="item.showVisit"
             :prompt="item.prompt"
-            @click="handleJumpPathClick(item.title)"
+            @emits-click="handleJumpPathClick(item.title)"
           />
         </div>
       </div>
@@ -27,7 +27,7 @@ const router = useRouter()
 const state = await getData('api/minecraft/state')
 
 const homeTabs = reactive([
-  { title: '在线列表', num: state.data ? state.data.players.online : 0 },
+  { title: '在线列表', num: state?.data ? state?.data.players.online : 0 },
   { title: '玩家列表', showVisit: true },
   { title: '快捷权限', showVisit: true, prompt: '忘记指令了? 试试快捷指令吧' }
 ])
