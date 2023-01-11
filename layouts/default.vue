@@ -78,7 +78,7 @@ const layoutTabs = [{
   path: '/'
 }, {
   name: '玩家列表',
-  path: '/server-status'
+  path: '/users'
 }
 ]
 
@@ -86,7 +86,7 @@ onMounted(() => {
   const route = useRoute()
   const PATH = {
     '/': 0,
-    '/server-status': 1
+    '/users': 1
   }
   // 默认值处理tabs
   handleSelectedHandOff(PATH[route.path])
