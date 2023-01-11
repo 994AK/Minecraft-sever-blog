@@ -1,7 +1,7 @@
-export const useSelectEffect = () => {
-  const selectedIndex = ref(0)
+export const useSelectEffect = (path:number) => {
+  const selectedIndex = ref(path)
 
-  const handleSelectedHandOff = (index: number) => {
+  const handleSelectedHandOff = (index: any) => {
     selectedIndex.value = index
   }
 

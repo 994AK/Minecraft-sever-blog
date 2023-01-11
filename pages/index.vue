@@ -21,17 +21,20 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
+const router = useRouter()
 const state = await getData('api/minecraft/state')
 
 const homeTabs = reactive([
-  { title: '在线列表', num: state?.data ? state.data?.players.online : 0 },
+  { title: '在线列表', num: state.data ? state.data.players.online : 0 },
   { title: '玩家列表', showVisit: true },
   { title: '快捷权限', showVisit: true, prompt: '忘记指令了? 试试快捷指令吧' }
 ])
 
-const handleJumpPathClick = (title: string) => {
-  if (title === '玩家列表') { return navigateTo('/users') }
+const handleJumpPathClick = (title) => {
+  if (title === '玩家列表') {
+    router.push('/users')
+  }
 }
 
 useHead({
