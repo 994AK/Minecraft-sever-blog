@@ -1,5 +1,6 @@
 <template>
   <div>
+    <HeadTabs :selected-index="0" />
     <div class=" bg-gray-50 drop-shadow-md">
       <div class="md:px-10 px-4">
         <div class="text-xl py-2  md:text-4xl font-bold text-indigo-600 md:pt-8 md:pb-5 text-purple-700">
