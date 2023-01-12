@@ -57,7 +57,6 @@ import {
 } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
 import debounce from '~/utils/debounce.js'
-const emit = defineEmits(['signupFn'])
 const formState = reactive({
   name: '',
   password: '',
@@ -66,11 +65,9 @@ const formState = reactive({
 const onFinish = (values) => {
   debounce(async () => {
     const { value: data } = await postData('api/auth/signup', values)
-    if (data) { return message.warning(data.msg) }
+    if (!data) { return message.warning(data.msg) }
     message.success(data.msg)
-
-    // 调用父级的方法 -> 切换登陆模式
-    emit('signupFn')
+    await navigateTo('/login')
   }, 500)
 }
 </script>

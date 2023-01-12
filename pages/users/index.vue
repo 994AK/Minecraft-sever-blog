@@ -32,7 +32,7 @@
             gap-3 w-full"
           >
             <div class="flex-none md:w-[80px] h-[80px]">
-              <img class="md:w-[80px] h-[80px] object-cover rounded-full" :src="'https://mc-heads.net/avatar/'+item" alt="像素头像">
+              <img v-real-img="'https://mc-heads.net/avatar/'+item" src="/sdf.png" class="md:w-[80px] h-[80px] object-cover rounded-full" alt="像素头像">
             </div>
 
             <!-- 电脑页 -->
@@ -59,10 +59,14 @@
 
 <script setup>
 import debounce from '~/utils/debounce.js'
+import { vRealImgFn } from '~/utils/vRealImg'
 const state = ref(await getData('api/minecraft/state'))
 function handleClickFlushed () {
   debounce(async () => {
     state.value = await getData('api/minecraft/state')
   }, 500)
 }
+
+// 处理图片加载失败 没有默认图情况
+const vRealImg = vRealImgFn()
 </script>

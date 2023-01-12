@@ -6,16 +6,16 @@
       </div>
       <div class="login-form">
         <div class="title">
-          <p>{{ '登陆页面' }}</p>
-          <p>{{ '登陆用户' }}</p>
+          <p>{{ '注册页面' }}</p>
+          <p>{{ '注册用户' }}</p>
         </div>
 
         <div class="form">
-          <LoginUser />
+          <SignupUser />
         </div>
       </div>
       <div class="login-handoff">
-        没有账号? <span @click="handleHandOff"> 点击这里注册 </span>
+        已有账号? <span @click="handleHandOff">{{ '点击这里登陆' }} </span>
       </div>
     </div>
   </div>
@@ -25,13 +25,9 @@
 import {
   CarTwoTone
 } from '@ant-design/icons-vue'
-// 切换登陆与注册 false登陆页面
-
-// 登陆与注册切换
 async function handleHandOff () {
-  await navigateTo('/registratio')
+  await navigateTo('/login')
 }
-
 </script>
 
 <style lang="scss" scoped>

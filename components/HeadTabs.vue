@@ -34,39 +34,38 @@
             <!--            </div>-->
           </div>
         </div>
-
-        <!-- 手机tab  -->
-        <div class="md:hidden bg-gray-700" :class="[control ? 'h-48' : 'h-15']">
-          <div class="flex py-3 items-center justify-between">
-            <div class="flex pl-5 justify-center items-center ">
-              <img class="w-[40px] h-[40px]" alt="logo" src="/favicon.ico">
-            </div>
-            <div
-              class="
+      </div>
+      <!-- 手机tab  -->
+      <div class="md:hidden bg-gray-700" :class="[control ? 'h-48' : 'h-15']">
+        <div class="flex py-3 items-center justify-between">
+          <div class="flex pl-5 justify-center items-center ">
+            <img class="w-[40px] h-[40px]" alt="logo" src="/favicon.ico">
+          </div>
+          <div
+            class="
               w-[40px] h-[40px] mr-2.5
               transition-all ease-out duration-500
               flex justify-center items-center text-white bg-slate-200 bg-opacity-20 rounded-md active:bg-slate-600
             "
-              @click="controlShow"
-            >
-              <img src="/kz.png" alt="控制器" width="25" height="25">
-            </div>
+            @click="controlShow"
+          >
+            <img src="/kz.png" alt="控制器" width="25" height="25">
           </div>
-          <div v-show="control" class="mx-2.5 my-5">
-            <div
-              v-for="(item,index) in layoutTabs"
-              :key="item"
-              :class="[props.selectedIndex === index && 'tabs-Selected-yes']"
-              class="px-2.5 py-1.5 mb-1 "
+        </div>
+        <div v-show="control" class="mx-2.5 my-5">
+          <div
+            v-for="(item,index) in layoutTabs"
+            :key="item"
+            :class="[props.selectedIndex === index && 'tabs-Selected-yes']"
+            class="px-2.5 py-1.5 mb-1 "
+          >
+            <NuxtLink
+              class="transition-all ease-out duration-700 text-gray-400 w-full flex"
+              :class="[props.selectedIndex === index && 'tabs-Selected-text-yes']"
+              :to="item.path"
             >
-              <NuxtLink
-                class="transition-all ease-out duration-700 text-gray-400 w-full flex"
-                :class="[props.selectedIndex === index && 'tabs-Selected-text-yes']"
-                :to="item.path"
-              >
-                {{ item.name }}
-              </NuxtLink>
-            </div>
+              {{ item.name }}
+            </NuxtLink>
           </div>
         </div>
       </div>
