@@ -1,5 +1,8 @@
 node_modules
 *.log*
+.idea
+components.d.ts
+.DS_Store
 .nuxt
 .nitro
 .cache
