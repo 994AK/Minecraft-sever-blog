@@ -42,6 +42,7 @@ import {
 } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
 import debounce from '~/utils/debounce.js'
+const router = useRouter()
 const formState = reactive({
   name: '',
   password: ''
@@ -53,9 +54,7 @@ const onFinish = (values) => {
     message.success(data.msg)
     const authToken = useCookie('authToken')
     authToken.value = data?.data?.access_token
-    // const user = await getData('api/user/findUserById')
-    // console.log(user.data)
-    await navigateTo('/')
+    router.go(-1)
   }, 500)
   console.log('Success:', values)
 }

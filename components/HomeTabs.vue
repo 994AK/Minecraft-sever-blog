@@ -58,9 +58,8 @@ defineEmits(['emitsClick'])
   @apply
   mb-5
   md:mb-0
-  md:h-36 border-2 border-gray-100 rounded-xl
-  bg-white md:w-1/3
-  md:mr-5
+  border-2 border-gray-100 rounded-xl
+  bg-white
   md:hover:shadow-md
 }
 </style>
