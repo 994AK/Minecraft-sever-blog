@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="md:static sticky top-0">
     <div class="md:py-2 pb-2 md:px-10 md:bg-gray-700">
       <!--  电脑tab   -->
       <div class="hidden max-w-7xl mx-auto w-full  md:flex md:items-center md:h-full ">
@@ -16,22 +16,6 @@
             >
               {{ item.name }}
             </NuxtLink>
-          </div>
-          <div class="flex-1 md:flex md:justify-end">
-            <!--    未登陆状态        -->
-            <!--            <div class="flex">-->
-            <!--              <div class="transition-all ease-out duration-500 cursor-pointer w-20 p-1 text-center mr-5 border text-white rounded-md font-normal hover:bg-zinc-500">-->
-            <!--                立即注册-->
-            <!--              </div>-->
-            <!--              <div class="transition-all ease-out duration-500 cursor-pointer w-20 p-1 text-center border text-white rounded-md font-normal hover:bg-zinc-500">-->
-            <!--                登陆-->
-            <!--              </div>-->
-            <!--            </div>-->
-
-            <!-- 登陆显示头像 -->
-            <!--            <div class="h-full">-->
-            <!--              <img class="rounded-full w-12 h-12" src="/favicon.ico">-->
-            <!--            </div>-->
           </div>
         </div>
       </div>
