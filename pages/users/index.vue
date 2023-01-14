@@ -62,12 +62,11 @@ import debounce from '~/utils/debounce.js'
 import { vRealImgFn } from '~/utils/vRealImg'
 const state = ref(await getData('api/minecraft/state'))
 const findUser = ref(await postData('api/user/fineMultipleUser', { players: state.value.data.players.list }))
-
 const resultList = []
-// console.log(findUser.value.data)
 
-state.value.data.players.list.forEach((item) => {
-  const match = findUser.value.data.find(v => item === v.gamesName)
+
+state.value.data?.players.list.forEach((item) => {
+  const match = findUser.value?.data ? findUser.value.data.find(v => item === v.gamesName) : []
   if (match) {
     resultList.push({ ...match })
   } else {

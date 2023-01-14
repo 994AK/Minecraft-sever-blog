@@ -37,17 +37,20 @@
       </div>
 
       <div v-else class="md:mx-auto md:max-w-7xl md:items-center md:flex md:justify-between">
-<!--        <div class="md:flex md:gap-4 md:items-center md:border md:bg-white md:rounded-xl md:px-4 md:py-3 transition-all  duration-500 ease-in-out hover:shadow-xl cursor-default">-->
-<!--          <img class="md:w-20 md:h-20 md:object-cover md:border-2 md:border-gray-700 rounded-full"  src="/sdf.png"/>-->
-<!--          <div class="md:flex md:flex-col gap-1">-->
-<!--            <span class="font-bold text-xl text-indigo-600">66a</span>-->
-<!--            <span class="text-sm flex w-[14rem] max-h-10 overflow-hidden">练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半</span>-->
-<!--          </div>-->
-<!--        </div>-->
-        <div class="md:flex gap-3">
+        <div
+          class="m-4 md:m-0 flex gap-4 items-center border bg-white rounded-xl px-4 py-3 transition-all  duration-500 ease-in-out hover:shadow-xl cursor-default"
+          @click="navigateTo('/users/personal-center')"
+        >
+          <img class="w-20 h-20 md:object-cover border-2 border-gray-700 rounded-full" src="/sdf.png">
+          <div class="flex flex-col gap-1">
+            <span class="font-bold text-xl text-indigo-600">66a</span>
+            <span class="text-sm flex w-[14rem] max-h-10 overflow-hidden">练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半</span>
+          </div>
+        </div>
+        <div class="hidden md:flex gap-3">
           <div
-              class="cursor-pointer inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white hover:bg-indigo-700"
-              @click="navigateTo('/users/personal-center')"
+            class="cursor-pointer inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white hover:bg-indigo-700"
+            @click="navigateTo('/users/personal-center')"
           >
             个人中心
           </div>
@@ -73,8 +76,6 @@ const handleJumpPathClick = (title) => {
     router.push('/users')
   }
 }
-
-
 
 useHead({
   title: 'HuaYu服务器',

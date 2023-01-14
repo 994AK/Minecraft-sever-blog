@@ -75,6 +75,10 @@ const layoutTabs = [{
 }, {
   name: '玩家列表',
   path: '/users'
+},
+{
+  name: '个人中心',
+  path: '/users/personal-center'
 }
 ]
 

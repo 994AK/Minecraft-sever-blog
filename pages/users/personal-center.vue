@@ -1,5 +1,6 @@
 <template>
   <div>
+    <HeadTabs :selected-index="2" />
     <div>
       <div v-if="!res?.data?.gamesName">
         <span class="text-red-800 px-2">*</span>绑定用户ID: <input v-model="value" class="border">
