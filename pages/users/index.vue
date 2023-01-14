@@ -72,10 +72,7 @@ state.value.data?.players.list.forEach((item) => {
   } else {
     resultList.push({ gamesName: item, info: null })
   }
-  console.log(match)
 })
-
-console.log(resultList)
 
 function handleClickFlushed () {
   debounce(async () => {

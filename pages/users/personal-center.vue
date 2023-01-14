@@ -32,7 +32,6 @@
 
 <script setup>
 const res = ref(await getData('api/user/findUserById'))
-console.log(res.value.data)
 
 const value = ref('')
 const info = ref('')
