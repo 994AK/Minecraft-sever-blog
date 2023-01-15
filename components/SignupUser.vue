@@ -64,9 +64,11 @@ const formState = reactive({
 })
 const onFinish = (values) => {
   debounce(async () => {
-    const { value: data } = await postData('api/auth/signup', values)
-    if (!data) { return message.warning(data.msg) }
-    message.success(data.msg)
+    const res = await postData('api/auth/signup', values)
+    if (!res.value) {
+      message.warning('注册失败,检查账号密码')
+    }
+    message.success('注册成功')
     await navigateTo('/login')
   }, 500)
 }

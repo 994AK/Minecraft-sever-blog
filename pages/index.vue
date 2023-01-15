@@ -38,13 +38,13 @@
 
       <div v-else class="md:mx-auto md:max-w-7xl md:items-center md:flex md:justify-between">
         <div
-          class="m-4 md:m-0 flex gap-4 items-center border bg-white rounded-xl px-4 py-3 transition-all  duration-500 ease-in-out hover:shadow-xl cursor-default"
+          class=" m-4 md:m-0 flex gap-4 items-center border bg-white rounded-xl px-4 py-3 transition-all  duration-500 ease-in-out hover:shadow-xl cursor-pointer"
           @click="navigateTo('/users/personal-center')"
         >
           <img class="w-20 h-20 md:object-cover border-2 border-gray-700 rounded-full" src="/sdf.png">
           <div class="flex flex-col gap-1">
-            <span class="font-bold text-xl text-indigo-600">66a</span>
-            <span class="text-sm flex w-[14rem] max-h-10 overflow-hidden">练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半练习两年半</span>
+            <span class="font-bold text-xl text-indigo-600">{{ userInfo.gamesName }}</span>
+            <span class="text-sm flex w-[14rem] max-h-10 overflow-hidden">{{ userInfo.info }}</span>
           </div>
         </div>
         <div class="hidden md:flex gap-3">
@@ -65,8 +65,20 @@ const router = useRouter()
 const state = await getData('api/minecraft/state')
 const authToken = useCookie('authToken')
 
+const userInfo = reactive({
+  gamesName: '',
+  info: ''
+})
+
+if (authToken) {
+  const user = await getData('api/user/findUserById')
+  const { gamesName, info } = user.data
+  userInfo.gamesName = gamesName
+  userInfo.info = info
+}
+
 const homeTabs = reactive([
-  { title: '在线列表', num: state?.data ? state?.data.players.online : 0 },
+  { title: '在线列表', num: state?.data ? state?.data?.players.online : 0 },
   { title: '玩家列表', showVisit: true },
   { title: '快捷权限', showVisit: true, prompt: '忘记指令了? 试试快捷指令吧' }
 ])
@@ -79,8 +91,6 @@ const handleJumpPathClick = (title) => {
 
 useHead({
   title: 'HuaYu服务器',
-  // or, instead:
-  // titleTemplate: (title) => `My App - ${title}`,
   meta: [
     { content: 'description', name: '我的世界HuaYu服务器1.19.2' },
     { content: 'keywords', name: '我的世界服务器, HuaYu,我的世界1.19.2' }

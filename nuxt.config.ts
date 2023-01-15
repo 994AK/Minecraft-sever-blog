@@ -5,7 +5,8 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt'
   ],
   ssr: true,
   runtimeConfig: {
@@ -76,6 +77,5 @@ export default defineNuxtConfig({
         landscapeWidth: 1338 // 横屏时使用的视口宽度
       }
     }
-  }
-
+  },
 })

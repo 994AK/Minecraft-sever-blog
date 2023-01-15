@@ -42,6 +42,7 @@ import {
 } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
 import debounce from '~/utils/debounce.js'
+
 const router = useRouter()
 const formState = reactive({
   name: '',
@@ -49,11 +50,16 @@ const formState = reactive({
 })
 const onFinish = (values) => {
   debounce(async () => {
-    const { value: data } = await postData('api/auth/login', values)
-    if (!data) { return message.warning(data.msg) }
-    message.success(data.msg)
+    const res = await postData('api/auth/login', values)
+    if (!res.value) {
+      message.warning('请检查账号密码')
+    }
+    const { data } = res.value
+
     const authToken = useCookie('authToken')
-    authToken.value = data?.data?.access_token
+    authToken.value = data?.access_token
+
+    message.success('登陆成功')
     router.go(-1)
   }, 500)
   console.log('Success:', values)
