@@ -78,7 +78,7 @@ const layoutTabs = [{
 },
 {
   name: '个人中心',
-  path: '/users/personal-center'
+  path: '/users/personal/profile'
 }
 ]
 

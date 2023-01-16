@@ -7,7 +7,7 @@
     </div>
     <div class="flex gap-4 w-full flex-col">
       <div class="px-4 py-2 personal-selected">个人资料</div>
-      <div class="px-4 py-2 personal-on-select personal-hover">个人设置</div>
+<!--      <div class="px-4 py-2 personal-on-select personal-hover">个人设置</div>-->
     </div>
   </div>
 </template>
@@ -28,4 +28,3 @@
   @apply hover:text-blue-600 hover:bg-gray-50 hover:bg-opacity-80
 }
 </style>
-
