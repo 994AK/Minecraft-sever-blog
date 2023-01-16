@@ -39,7 +39,7 @@
       <div v-else class="md:mx-auto md:max-w-7xl md:items-center md:flex md:justify-between">
         <div
           class=" m-4 md:m-0 flex gap-4 items-center border bg-white rounded-xl px-4 py-3 transition-all  duration-500 ease-in-out hover:shadow-xl cursor-pointer"
-          @click="navigateTo('/users/personal-center')"
+          @click="navigateTo('/users/personal')"
         >
           <img class="w-20 h-20 md:object-cover border-2 border-gray-700 rounded-full" src="/sdf.png">
           <div class="flex flex-col gap-1">
@@ -50,7 +50,7 @@
         <div class="hidden md:flex gap-3">
           <div
             class="cursor-pointer inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white hover:bg-indigo-700"
-            @click="navigateTo('/users/personal-center')"
+            @click="navigateTo('/users/personal')"
           >
             个人中心
           </div>
@@ -70,11 +70,10 @@ const userInfo = reactive({
   info: ''
 })
 
-if (authToken) {
+if (authToken.value) {
   const user = await getData('api/user/findUserById')
-  const { gamesName, info } = user.data
-  userInfo.gamesName = gamesName
-  userInfo.info = info
+  userInfo.gamesName = user.data?.gamesName
+  userInfo.info = user.data?.info
 }
 
 const homeTabs = reactive([

@@ -1,6 +1,6 @@
 <template>
   <div class="md:static sticky top-0">
-    <div class="md:py-2 pb-2 md:px-10 md:bg-gray-700">
+    <div class="md:py-2 pb-2 md:bg-gray-700">
       <!--  电脑tab   -->
       <div class="hidden max-w-7xl mx-auto w-full  md:flex md:items-center md:h-full ">
         <img alt="logo" src="/favicon.ico" width="40" height="40">
