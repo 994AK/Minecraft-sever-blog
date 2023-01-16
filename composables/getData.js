@@ -16,6 +16,7 @@ export const getData = async (url, params = {}) => {
 }
 
 export const postData = async (url, params = {}) => {
+  console.log(1111)
   const authToken = useCookie('authToken')
   const { data } = await useFetch(
     envUrl + url,
