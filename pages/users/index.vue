@@ -31,7 +31,7 @@
             md:bg-white bg-neutral-50 rounded-lg active:bg-stone-200 shadow-md md:shadow-none
             gap-3 w-full"
           >
-            <div class="flex-none md:w-[80px] h-[80px]">
+            <div class="flex-none w-[80px] h-[80px]">
               <img v-real-img="item?.imageUrl ? envUrl + item.imageUrl : 'https://mc-heads.net/avatar/'+item.gamesName" src="/sdf.png" class="md:w-[80px] h-[80px] object-cover rounded-full" alt="像素头像">
             </div>
 
