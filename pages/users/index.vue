@@ -32,7 +32,7 @@
             gap-3 w-full"
           >
             <div class="flex-none md:w-[80px] h-[80px]">
-              <img v-real-img="'https://mc-heads.net/avatar/'+item.gamesName" src="/sdf.png" class="md:w-[80px] h-[80px] object-cover rounded-full" alt="像素头像">
+              <img v-real-img="item?.imageUrl ? envUrl + item.imageUrl : 'https://mc-heads.net/avatar/'+item.gamesName" src="/sdf.png" class="md:w-[80px] h-[80px] object-cover rounded-full" alt="像素头像">
             </div>
 
             <!-- 电脑页 -->
@@ -60,10 +60,10 @@
 <script setup>
 import debounce from '~/utils/debounce.js'
 import { vRealImgFn } from '~/utils/vRealImg'
+const envUrl = ref(process.env.NODE_ENV !== 'development' ? 'http://159.75.79.184:3000/' : 'http://localhost:3000/')
 const state = ref(await getData('api/minecraft/state'))
 const findUser = ref(await postData('api/user/fineMultipleUser', { players: state.value.data.players.list }))
 const resultList = []
-
 
 state.value.data?.players.list.forEach((item) => {
   const match = findUser.value?.data ? findUser.value.data.find(v => item === v.gamesName) : []

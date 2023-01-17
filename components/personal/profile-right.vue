@@ -16,11 +16,11 @@
               :accept="null"
               list-type="picture-card"
               :show-upload-list="false"
-              action="http://127.0.0.1:3000/api/upload/file"
+              :action="envUrl + 'api/upload/file'"
               :before-upload="beforeUpload"
               @change="handleChange"
             >
-              <img v-if="profileForm.imageUrl" :src="profileForm.imageUrl" alt="avatar">
+              <img v-if="profileForm.imageUrl" :src="envUrl + profileForm.imageUrl" alt="avatar">
               <div v-else>
                 <div class="ant-upload-text">
                   上传头像
@@ -78,7 +78,10 @@
 <script setup>
 import { message } from 'ant-design-vue'
 
+const envUrl = ref(process.env.NODE_ENV !== 'development' ? 'http://159.75.79.184:3000/' : 'http://localhost:3000/')
+
 const user = await getData('api/user/findUserById')
+
 const useProfileEffects = () => {
   const profileForm = reactive({
     gamesName: '',
@@ -93,11 +96,15 @@ const useProfileEffects = () => {
 
   // 禁用判断
   const disable = ref(false)
+  const gamesName = ref('')
+  const info = ref('')
+  const imageUrl = ref('')
 
   // 数据回显处理
   const handleEcho = (val) => {
     profileForm.gamesName = val.gamesName
     profileForm.info = val.info
+    profileForm.imageUrl = val.imageUrl
   }
 
   const handleChange = (info) => {
@@ -105,8 +112,7 @@ const useProfileEffects = () => {
       return
     }
     if (info.file.status === 'done') {
-      const envUrl = process.env.NODE_ENV !== 'development' ? 'http://159.75.79.184:3000/' : 'http://localhost:3000/'
-      profileForm.imageUrl = envUrl + info.fileList[0].response.data?.filename
+      profileForm.imageUrl = info.fileList[0].response.data?.filename
     }
     if (info.file.status === 'error') {
       message.error('upload error')
@@ -125,21 +131,34 @@ const useProfileEffects = () => {
     return isJpgOrPng && isLt10M
   }
 
+  // 发起请求
+  const handlePostSuccess = async () => {
+    const res = await postData('api/user/updateFineUser', {
+      gamesName: gamesName.value,
+      info: info.value,
+      imageUrl: imageUrl.value
+    })
+
+    if (res.value?.code === 200) {
+      message.success('保存成功')
+      disable.value = false
+    } else {
+      message.warning(res.value?.data.msg)
+      disable.value = false
+    }
+  }
+
   // 处理请求值
   const handleSuccess = () => {
     profileRules.gamesName = !profileForm.gamesName
     profileRules.info = !profileForm.info
-    console.log(1111)
+    gamesName.value = profileForm.gamesName
+    info.value = profileForm.info
+    imageUrl.value = profileForm.imageUrl
 
-    // disable.value = true
-    postData('api/user/updateFineUser', profileForm)
-    // if (res.value?.code === 200) {
-    //   message.success('保存成功')
-    //   disable.value = false
-    // } else {
-    //   message.warning(res.value?.data.msg)
-    //   disable.value = false
-    // }
+    handlePostSuccess()
+
+    disable.value = true
   }
 
   return {
